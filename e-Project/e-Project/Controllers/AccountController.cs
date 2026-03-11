@@ -26,4 +26,26 @@ public class AccountController : Controller
 
         return View(user);
     }
+
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Login(string email, string password)
+    {
+        var user = _context.Users
+            .FirstOrDefault(u => u.Email == email && u.Password == password);
+
+        if (user == null)
+        {
+            ViewBag.Error = "Invalid email or password";
+            return View();
+        }
+
+        HttpContext.Session.SetString("UserEmail", user.Email);
+
+        return RedirectToAction("Index", "Home");
+    }
 }
