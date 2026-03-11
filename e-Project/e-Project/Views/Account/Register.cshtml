@@ -1,10 +1,23 @@
-﻿<h2>Register</h2>
+﻿@model e_Project.Models.User
+
+<h2>Register</h2>
 
 <form asp-action="Register" method="post">
-    <input type="text" name="Email" placeholder="Email" />
-    <input type="password" name="Password" placeholder="Password" />
-    <input type="text" name="Name" placeholder="Name" />
-    <input type="text" name="Phone" placeholder="Phone" />
-
-    <button type="submit">Register</button>
+    <div class="mb-3">
+        <input asp-for="Email" class="form-control" placeholder="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Name" class="form-control" placeholder="Full Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Phone" class="form-control" placeholder="Phone Number" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
 </form>
